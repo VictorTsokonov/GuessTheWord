@@ -51,14 +51,17 @@ void UBullCowCartridge::ProcessGuest(const FString& Guess)
 {
     if (Guess == HiddenWord)
     {
+        ClearScreen();
         PrintLine(TEXT("You won!"));
         EndGame();
+        return;
     }
     else
     {
         PrintLine(FString::Printf(TEXT("You've lost a life --> %i left"), --Lives));
         if (Lives == 0)
         {
+            ClearScreen();
             PrintLine(TEXT("You lost!"));
             EndGame();
         }
