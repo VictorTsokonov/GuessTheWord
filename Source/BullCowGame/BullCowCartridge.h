@@ -11,13 +11,12 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
 {
 	GENERATED_BODY()
 
-
 public:
 	virtual void BeginPlay() override;
 	virtual void OnInput(const FString& Input) override;
 	void SetupGame();
 	void EndGame();
-	void ProcessGuest(const FString& Guess);
+	void ProcessGuest(const FString& Guess); // Compare the user Input to the HiddenWord, then decrement Lives if the guess is wrong.
 
 	// Your declarations go below!
 private:
