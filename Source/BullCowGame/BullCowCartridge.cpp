@@ -22,27 +22,8 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
     }
     else
     {
-        if (Input == HiddenWord)
-        {
-            PrintLine(TEXT("You won!"));
-            EndGame();
-        }
-        else
-        {
-            
-            PrintLine(FString::Printf(TEXT("You've lost a life --> %i left"), --Lives));
-            if (Lives == 0)
-            {
-                PrintLine(TEXT("You lost!"));
-                EndGame();
-            }
-            
-               
-            
-        }
-
+        ProcessGuest(Input);
     }
-    
 }
 
 void UBullCowCartridge::SetupGame()
@@ -64,4 +45,22 @@ void UBullCowCartridge::EndGame()
 {
     bGameOver = true;
     PrintLine(TEXT("PRESS ENTER TO PLAY AGAIN"));
+}
+
+void UBullCowCartridge::ProcessGuest(const FString& Guess)
+{
+    if (Guess == HiddenWord)
+    {
+        PrintLine(TEXT("You won!"));
+        EndGame();
+    }
+    else
+    {
+        PrintLine(FString::Printf(TEXT("You've lost a life --> %i left"), --Lives));
+        if (Lives == 0)
+        {
+            PrintLine(TEXT("You lost!"));
+            EndGame();
+        }
+    }
 }
