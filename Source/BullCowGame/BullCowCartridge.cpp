@@ -35,6 +35,8 @@ void UBullCowCartridge::SetupGame()
 
     PrintLine(FString::Printf(TEXT("It's lenght is: %i"), HiddenWord.Len()));
     PrintLine(TEXT("Your guess:"));
+
+    PrintLine(TEXT("The first charecter of the word is %c"), HiddenWord[0]);
 }
 
 void UBullCowCartridge::EndGame()
