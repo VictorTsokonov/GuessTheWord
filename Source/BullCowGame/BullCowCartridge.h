@@ -17,7 +17,7 @@ public:
 	void SetupGame();
 	void EndGame();
 	void ProcessGuest(const FString& Guess); // Compare the user Input to the HiddenWord, then decrement Lives if the guess is wrong.
-	bool IsIsogram(const FString& Word);
+	bool IsIsogram(const FString& Word) const;
 
 	// Your declarations go below!
 private:
