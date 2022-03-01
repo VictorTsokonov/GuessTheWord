@@ -60,6 +60,10 @@ void UBullCowCartridge::ProcessGuest(const FString& Guess)
         {
             PrintLine(TEXT("The word is isogram"));
         }
+        if (!IsIsogram(Guess))
+        {
+            PrintLine(TEXT("The word is not isogram"));
+        }
         PrintLine(FString::Printf(TEXT("You've lost a life --> %i left"), --Lives));
         if (Lives == 0)
         {
@@ -74,7 +78,10 @@ bool UBullCowCartridge::IsIsogram(const FString& Word)
 {
     for (int i = 0; i < Word.Len(); i++)
     {
-        if (Word[i] != Word[Word.Len() - i])return false;
+        for (int j = i+1; j < Word.Len(); j++)
+        {
+            if (Word[i] == Word[j])return false;
+        }
     }
     return true;
 }
