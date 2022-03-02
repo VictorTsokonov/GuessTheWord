@@ -46,6 +46,7 @@ void UBullCowCartridge::EndGame()
 
 void UBullCowCartridge::ProcessGuest(const FString& Guess)
 {
+    ClearScreen();
     if (Guess == HiddenWord)
     {
         ClearScreen();
