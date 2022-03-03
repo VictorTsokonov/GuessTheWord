@@ -76,9 +76,9 @@ void UBullCowCartridge::ProcessGuest(const FString& Guess)
 
 bool UBullCowCartridge::IsIsogram(const FString& Word) const
 {
-    for (int i = 0; i < Word.Len(); i++)
-    {
-        for (int j = i+1; j < Word.Len(); j++)
+    for (int32 i = 0; i < Word.Len(); i++)
+    { 
+        for (int32 j = i+1; j < Word.Len(); j++)
         {
             if (Word[i] == Word[j])return false;
         }
