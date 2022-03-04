@@ -71,6 +71,7 @@ void UBullCowCartridge::ProcessGuest(const FString& Guess)
             ClearScreen();
             PrintLine(TEXT("You lost!"));
             EndGame();
+            return;
         }
     }
     PrintLine(TEXT("Guess the word: "));
