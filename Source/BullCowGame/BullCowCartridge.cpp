@@ -7,11 +7,7 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
     Isograms = GetValidWords(Words);
-    
     SetupGame();
-    PrintLine(FString::Printf(TEXT("The HiddenWord is: %s"), *HiddenWord)); //Debug Line
-    PrintLine(TEXT("The number of words is: %i"),Words.Num());
-    PrintLine(TEXT("The number of valid words is: %i"),GetValidWords(Words).Num());
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
@@ -29,19 +25,18 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
 
 void UBullCowCartridge::SetupGame()
 {
-    // Welcome the player
     HiddenWord = Isograms[FMath::RandRange(0, Isograms.Num() - 1)];
-    Lives = HiddenWord.Len();
+    Lives = HiddenWord.Len()*2;
     bGameOver = false;
 
     PrintLine(TEXT("Welcome to the game!"));
     PrintLine(FString::Printf(TEXT("You have %i lives."), Lives ));
-    
-
-    PrintLine(FString::Printf(TEXT("It's lenght is: %i"), HiddenWord.Len()));
-    PrintLine(TEXT("Your guess:"));
-
+    PrintLine(FString::Printf(TEXT("The lenght of the word is: %i"), HiddenWord.Len()));
+    PrintLine(FString::Printf(TEXT("The HiddenWord is: %s"), *HiddenWord)); //Debug Line
     PrintLine(TEXT("The first charecter of the word is %c"), HiddenWord[0]);
+    PrintLine(TEXT("The last charecter of the word is %c"), HiddenWord[HiddenWord.Len()-1]);
+    PrintLine(TEXT("------------------------------------------"));
+    PrintLine(TEXT("Guess the word: "));
 }
 
 void UBullCowCartridge::EndGame()
@@ -53,6 +48,14 @@ void UBullCowCartridge::EndGame()
 void UBullCowCartridge::ProcessGuest(const FString& Guess)
 {
     ClearScreen();
+    PrintLine(TEXT("Welcome to the game!"));
+    PrintLine(FString::Printf(TEXT("You have %i lives."), Lives ));
+    PrintLine(FString::Printf(TEXT("The lenght of the word is: %i"), HiddenWord.Len()));
+    PrintLine(FString::Printf(TEXT("The HiddenWord is: %s"), *HiddenWord)); //Debug Line
+    PrintLine(TEXT("The first charecter of the word is %c"), HiddenWord[0]);
+    PrintLine(TEXT("The last charecter of the word is %c"), HiddenWord[HiddenWord.Len()-1]);
+    PrintLine(TEXT("------------------------------------------"));
+
     if (Guess == HiddenWord)
     {
         ClearScreen();
@@ -62,14 +65,6 @@ void UBullCowCartridge::ProcessGuest(const FString& Guess)
     }
     else
     {
-        if (IsIsogram(Guess))
-        {
-            PrintLine(TEXT("The word is isogram"));
-        }
-        if (!IsIsogram(Guess))
-        {
-            PrintLine(TEXT("The word is not isogram"));
-        }
         PrintLine(FString::Printf(TEXT("You've lost a life --> %i left"), --Lives));
         if (Lives == 0)
         {
@@ -78,6 +73,7 @@ void UBullCowCartridge::ProcessGuest(const FString& Guess)
             EndGame();
         }
     }
+    PrintLine(TEXT("Guess the word: "));
 }
 
 bool UBullCowCartridge::IsIsogram(const FString& Word) const
