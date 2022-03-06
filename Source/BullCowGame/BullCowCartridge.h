@@ -20,6 +20,7 @@ public:
 	bool IsIsogram(const FString& Word) const; // Checks if the word has repeating letters
 	const TArray<FString> GetValidWords(const TArray<FString> &WordsList) const;
 
+
 	// Your declarations go below!
 private:
 	bool bGameOver;
