@@ -65,7 +65,9 @@ void UBullCowCartridge::ProcessGuest(const FString& Guess)
     }
     else
     {
+
         PrintLine(FString::Printf(TEXT("You've lost a life --> %i left"), --Lives));
+
         if (Lives == 0)
         {
             ClearScreen();
