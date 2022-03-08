@@ -18,7 +18,7 @@ public:
 	void EndGame();
 	void ProcessGuest(const FString& Guess); // Compare the user Input to the HiddenWord, then decrement Lives if the guess is wrong.
 	bool IsIsogram(const FString& Word) const; // Checks if the word has repeating letters
-	const TArray<FString> GetValidWords(const TArray<FString> &WordsList) const;
+	const TArray<FString> GetValidWords(const TArray<FString> &WordsList) const; // Get the words that are not isograms and within a specific range
 
 
 	// Your declarations go below!
