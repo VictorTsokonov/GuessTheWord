@@ -38,6 +38,7 @@ void UBullCowCartridge::SetupGame()
     PrintLine(TEXT("The last charecter of the word is %c"), HiddenWord[HiddenWord.Len()-1]);
     PrintLine(TEXT("------------------------------------------"));
     PrintLine(TEXT("Guess the word: "));
+
 }
 
 void UBullCowCartridge::EndGame()
