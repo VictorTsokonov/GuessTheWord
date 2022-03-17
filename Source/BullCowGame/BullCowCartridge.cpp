@@ -22,6 +22,8 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
         ProcessGuest(Input);
     }
 
+
+
 }
 
 void UBullCowCartridge::SetupGame()
