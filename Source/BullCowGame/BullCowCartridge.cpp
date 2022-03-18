@@ -51,6 +51,7 @@ void UBullCowCartridge::EndGame()
 
 void UBullCowCartridge::ProcessGuest(const FString& Guess)
 {
+    
     ClearScreen();
     PrintLine(TEXT("Welcome to the game!"));
     PrintLine(FString::Printf(TEXT("You have %i lives."), Lives ));
